@@ -30,6 +30,8 @@ public class ProductService {
 
         productRepository.save(newProduct);
 
+        logger.info("\nAdmin added product\n");
+
         return product;
     }
 
@@ -76,10 +78,14 @@ public class ProductService {
 
         if (productToDelete != null) {
 
+            logger.info("\nAdmin deleted product\n");
+
             productRepository.delete(productToDelete);
 
             return "Deleted product";
         } else {
+
+            logger.error("\nCould not delete product\n");
 
             return "provided product ID does not exist";
         }
